@@ -1,0 +1,10 @@
+.nav {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  padding: 1rem 4rem;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+  margin: 20px;
+}

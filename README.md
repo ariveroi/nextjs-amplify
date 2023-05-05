@@ -1,38 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next JS 12
 
-## Getting Started
+## Static generation
 
-First, run the development server:
+Using this generation, the HTML page is generated at build time (the page is generated when running `next build`). It can be cached by a CDN.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Static generation with data
+
+Some pages require fetching external data for pre-rendering. There are two scenarios, and one or both might apply. In each case, you can use these functions that Next.js provides:
+
+    The page content depends on external data: Use getStaticProps.
+    The page paths depend on external data: Use getStaticPaths (usually in addition to getStaticProps).
+
+You should use getStaticProps if:
+
+    The data required to render the page is available at build time ahead of a user’s request
+    The data comes from a headless CMS
+    The page must be pre-rendered (for SEO) and be very fast — getStaticProps generates HTML and JSON files, both of which can be cached by a CDN for performance
+    The data can be publicly cached (not user-specific). This condition can be bypassed in certain specific situation by using a Middleware to rewrite the path.
+
+## Server-Side Rendering (SSR or Dynamic Rendering)
+
+If a page uses **SSR**, the HTML page is generated on each request.
+
+To use it:
+
 ```
+export default function Page({ data }) {
+  // Render data...
+}
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`)
+  const data = await res.json()
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  // Pass data to the page via props
+  return { props: { data } }
+}
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```

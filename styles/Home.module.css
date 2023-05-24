@@ -1,5 +1,17 @@
 .container {
   padding: 2rem;
+  width: 90%;
+}
+
+.main {
   width: 80%;
   margin: auto;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #cacaca;
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 20px 0;
 }

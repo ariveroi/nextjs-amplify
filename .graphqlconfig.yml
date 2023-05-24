@@ -1,0 +1,27 @@
+projects:
+  nextjsamplify:
+    schemaPath: graphql/schema.json
+    includes:
+      - ./graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: ./graphql
+        maxDepth: 2
+  NextBlog:
+    schemaPath: amplify/backend/api/NextBlog/build/schema.graphql
+    includes:
+      - ./graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: ./graphql
+extensions:
+  amplify:
+    version: 3

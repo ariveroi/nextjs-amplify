@@ -6,7 +6,7 @@ export default function Env({ env }) {
   return (
     <PageLayout title="News App - Env Varibales" header="Env Varibales">
       <section className={styles.container}>
-        <h1>{env}</h1>
+        <h1>Testing: {env}</h1>
       </section>
     </PageLayout>
   );

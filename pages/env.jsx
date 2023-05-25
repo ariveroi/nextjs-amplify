@@ -13,11 +13,11 @@ export default function Env({ env }) {
 }
 
 export async function getServerSideProps() {
-  const env = process.env.NEXT_PUBLIC_ENV_VARIABLE;
+  const env = process.env;
   console.log(env);
   return {
     props: {
-      env,
+      env: env.NEXT_PUBLIC_ENV_VARIABLE,
     },
   };
 }

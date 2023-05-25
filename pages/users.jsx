@@ -4,11 +4,11 @@ import PageLayout from "@/components/PageLayout";
 import Users from "@/components/Users";
 
 //This component is going to be rendered in the server (pre-rendering)
-export default function About() {
+export default function About({ users }) {
   return (
     <PageLayout title="News App - Articles" header="Articles">
       <section className={styles.container}>
-        {/* <Users users={users} /> */}
+        <Users users={users} />
       </section>
     </PageLayout>
   );
@@ -30,17 +30,17 @@ export default function About() {
 //   };
 // }
 
-//N requests -> executed 1 time (or at refresing the page)
-// export async function getStaticProps() {
-//   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-//   const data = await response.json();
-//   return {
-//     props: {
-//       users: data,
-//     },
-//     // revalidate: 1800,
-//   };
-// }
+// N requests -> executed 1 time (or at refresing the page)
+export async function getStaticProps() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await response.json();
+  return {
+    props: {
+      users: data,
+    },
+    // revalidate: 1800,
+  };
+}
 
 // export async function getStaticPaths() {
 //   const response = await fetch(

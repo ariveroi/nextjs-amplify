@@ -9,7 +9,7 @@ export default function Home({ articles }) {
     <PageLayout title="News App - Home">
       <section className={styles.container}>
         <h1>Leverage amplify and next js</h1>
-        <h2>Env variable: {process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}</h2>
+        <h2>Env variable: {process.env.NEXT_PUBLIC_ENV_VARIABLE}</h2>
       </section>
     </PageLayout>
   );

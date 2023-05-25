@@ -14,10 +14,3 @@ export default function Home({ articles }) {
     </PageLayout>
   );
 }
-
-export async function getStaticProps() {
-  console.log("here", process.env);
-  return {
-    props: {},
-  };
-}

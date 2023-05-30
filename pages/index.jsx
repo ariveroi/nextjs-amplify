@@ -3,13 +3,11 @@ import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import Articles from "@/components/Users";
 
-//This component is going to be rendered in the server (pre-rendering)
-export default function Home({ articles }) {
+export default function Home() {
   return (
     <PageLayout title="News App - Home">
       <section className={styles.container}>
         <h1>Leverage amplify and next js</h1>
-        <h2>Env variable: {process.env.NEXT_PUBLIC_ENV_VARIABLE}</h2>
       </section>
     </PageLayout>
   );

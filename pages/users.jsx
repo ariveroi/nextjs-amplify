@@ -32,8 +32,9 @@ export default function About({ users }) {
 
 // N requests -> executed 1 time (or at refresing the page)
 export async function getStaticProps() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data = await response.json();
+  // const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  // const data = await response.json();
+  const data = await fetch("/api/users");
   return {
     props: {
       users: data,
